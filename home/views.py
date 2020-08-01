@@ -2,16 +2,22 @@
 Definition of views.
 """
 
+from django.shortcuts import render,render_to_response
+from django.views.generic import TemplateView
+from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
+
 
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
     return render(
         request,
-        'app/index.html',
+        'home/home.html',
         {
             'title':'Home Page',
             'year':datetime.now().year,
@@ -23,7 +29,7 @@ def contact(request):
     assert isinstance(request, HttpRequest)
     return render(
         request,
-        'app/contact.html',
+        'home/contact.html',
         {
             'title':'Contact',
             'message':'Your contact page.',
@@ -36,7 +42,7 @@ def about(request):
     assert isinstance(request, HttpRequest)
     return render(
         request,
-        'app/about.html',
+        'home/about.html',
         {
             'title':'About',
             'message':'Your application description page.',

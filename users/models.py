@@ -11,12 +11,13 @@ class Customer(models.Model):
     address = models.CharField(max_length = 200)
     contact_number = models.IntegerField()
     registered = models.DateField()
+    wallet = models.DecimalField(max_digits = 6, decimal_places=2)
     
     def __str__(self):
         return self.user.username
 
 class Courier(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete = models.CASCADE)
     name = models.CharField(max_length = 200)
     contact_number = models.IntegerField()
     company = models.CharField(max_length = 200)

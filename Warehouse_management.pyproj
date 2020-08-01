@@ -33,7 +33,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="home\context_processors.py" />
-    <Compile Include="home\forms.py" />
+    <Compile Include="home\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="login_logout\forms.py" />
     <Compile Include="home\migrations\__init__.py" />
     <Compile Include="home\models.py" />
     <Compile Include="home\tests.py" />
@@ -98,6 +101,8 @@
     <Content Include="home\static\home\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="home\static\home\scripts\bootstrap.js" />
     <Content Include="home\static\home\scripts\bootstrap.min.js" />
+    <Content Include="README.md" />
+    <Content Include="Warehouse_management\README.md" />
     <None Include="home\static\home\scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="home\static\home\scripts\jquery-1.10.2.js" />
     <Content Include="home\static\home\scripts\jquery-1.10.2.min.js" />
@@ -111,25 +116,17 @@
     <Content Include="home\static\home\scripts\respond.js" />
     <Content Include="home\static\home\scripts\respond.min.js" />
     <None Include="home\static\home\scripts\_references.js" />
-    <Content Include="home\templates\home\about.html" />
-    <Content Include="home\templates\home\contact.html" />
-    <Content Include="home\templates\home\index.html" />
+    <Content Include="home\templates\home\home.html" />
     <Content Include="home\templates\home\layout.html" />
-    <Content Include="home\templates\home\login.html" />
-    <Content Include="home\templates\home\loginpartial.html" />
+    <Content Include="login_logout\templates\login_logout\login.html" />
+    <Content Include="login_logout\templates\login_logout\loginpartial.html" />
     <Content Include="home\__pycache__\forms.cpython-38.pyc" />
     <Content Include="home\__pycache__\models.cpython-38.pyc" />
     <Content Include="home\__pycache__\views.cpython-38.pyc" />
     <Content Include="home\__pycache__\__init__.cpython-38.pyc" />
-    <Content Include="login_logout\templates\login_logout\index.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="users\templates\users\index.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="readme.html">
-      <SubType>WebBrowser</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

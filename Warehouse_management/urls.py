@@ -6,24 +6,18 @@ from datetime import datetime
 from django.urls import path
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
-
+from django.contrib import admin
+from django.urls import path, include
+from login_logout.views import WMLogin, WMLogout, WMAuth
+from home import views
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('home', views.home, name='home'),
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
-    path('login/',
-         LoginView.as_view
-         (
-             template_name='home/login.html',
-             authentication_form=forms.BootstrapAuthenticationForm,
-             extra_context=
-             {
-                 'title': 'Log in',
-                 'year' : datetime.now().year,
-             }
-         ),
-         name='login'),
-    path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
+    path('login/', WMAuth, name= 'login'),
+    path('logout/', WMLogout, name='logout'),
     path('admin/', admin.site.urls),
+    path('login_logout/', include('login_logout.urls')),
 ]
