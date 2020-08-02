@@ -49,3 +49,12 @@ def about(request):
             'year':datetime.now().year,
         }
     )
+
+
+
+def item_list(request):
+    context = {
+        'items':Item.object.all()
+        }
+    return render(request, 'item_list.html', context)
+

@@ -20,4 +20,6 @@ urlpatterns = [
     path('logout/', WMLogout, name='logout'),
     path('admin/', admin.site.urls),
     path('login_logout/', include('login_logout.urls')),
+    path('accounts/', include('allauth.urls')),
+    path('')
 ]

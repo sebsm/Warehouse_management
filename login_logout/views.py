@@ -32,4 +32,4 @@ def WMLogout(request):
 	if request.user.is_authenticated:
 		auth.logout(request)
 	messages.add_message(request, messages.INFO, 'You have been logged out')
-	return HttpResponseRedirect('/login')        
+	return HttpResponseRedirect('/home')        
