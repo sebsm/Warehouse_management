@@ -10,7 +10,7 @@ from django.contrib import messages
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
-
+from .models import Item
 
 def home(request):
     """Renders the home page."""
@@ -54,7 +54,14 @@ def about(request):
 
 def item_list(request):
     context = {
-        'items':Item.object.all()
+        'items':Item.objects.all()
         }
-    return render(request, 'item_list.html', context)
+    return render(request, 'home/home-page.html', context)
+
+
+def checkout(request):
+    return render(request, 'home/checkout.html')
+
+def product(request):
+    return render(request, 'home/product.html')
 

@@ -1,0 +1,12 @@
+﻿<!DOCTYPE html>
+{% extends "home/layout.html" %}
+
+{% block content %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<h2> Here is the list of the items</h2>
+
+{% for item in items %}
+    {{ item }}
+{% endfor %}
+{% endblock content%}
