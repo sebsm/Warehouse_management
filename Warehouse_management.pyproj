@@ -418,9 +418,12 @@
     <Content Include="home\static\home\scss\_custom-skin.scss" />
     <Content Include="home\static\home\scss\_custom-styles.scss" />
     <Content Include="home\static\home\scss\_custom-variables.scss" />
+    <Content Include="home\templates\home\base.html" />
     <Content Include="home\templates\home\checkout.html" />
-    <Content Include="home\templates\home\home-page.html" />
+    <Content Include="home\templates\home\footer.html" />
+    <Content Include="home\templates\home\home.html" />
     <Content Include="home\templates\home\item_list.html" />
+    <Content Include="home\templates\home\navbar.html" />
     <Content Include="home\templates\home\product.html" />
     <Content Include="README.md" />
     <Content Include="Warehouse_management\README.md" />
@@ -437,7 +440,7 @@
     <Content Include="home\static\home\scripts\respond.js" />
     <Content Include="home\static\home\scripts\respond.min.js" />
     <None Include="home\static\home\scripts\_references.js" />
-    <Content Include="home\templates\home\home.html" />
+    <Content Include="home\templates\home\home-page.html" />
     <Content Include="home\templates\home\layout.html" />
     <Content Include="login_logout\templates\login_logout\login.html" />
     <Content Include="login_logout\templates\login_logout\loginpartial.html" />
