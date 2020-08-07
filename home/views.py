@@ -18,7 +18,7 @@ from django.utils import timezone
 
 def home(request):
     """Renders the home page."""
-   assert isinstance(request, HttpRequest)
+    assert isinstance(request, HttpRequest)
     return render(
        request,
        'home/home-page.html',
@@ -67,6 +67,7 @@ def checkout(request):
 
 class HomeView(ListView):
     model = Item
+    paginate_by = 10
     template_name = "home.html"
 
 
