@@ -9,7 +9,7 @@ from .views import (
 )
 
 
-app_name = 'core'
+app_name = 'home'
 
 
 urlpatterns = [

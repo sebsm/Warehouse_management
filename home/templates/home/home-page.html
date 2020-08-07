@@ -1,6 +1,7 @@
 {% extends "home/layout.html" %}
 
 {% block content %}
+{% comment %}
 
 <div class="jumbotron">
     <h1>Django</h1>
@@ -29,5 +30,13 @@
         <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
     </div>
 </div>
+{% endcomment %}
 
+<div class="container body-content">
+
+        <hr/>
+        <footer>
+            <p>&copy; {{ year }} - Warehouse management application</p>
+        </footer>
+    </div>
 {% endblock %}
