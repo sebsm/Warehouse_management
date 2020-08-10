@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='item',
             name='category',
-            field=models.CharField(choices=[('S', 'Shirt'), ('SW', 'Sport wear'), ('OW', 'Outwear')], default=django.utils.timezone.now, max_length=2),
+            field=models.CharField(choices=[('S', 'Shirt'), ('SW', 'Sport wear'), ('OW', 'Outwear')],null=True, blank=True , max_length=2),
             preserve_default=False,
         ),
         migrations.AddField(
@@ -34,13 +34,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='item',
             name='label',
-            field=models.CharField(choices=[('P', 'Primary'), ('S', 'Secondary'), ('D', 'Danger')], default=django.utils.timezone.now, max_length=1),
+            field=models.CharField(choices=[('P', 'Primary'), ('S', 'Secondary'), ('D', 'Danger')], null=True, blank=True, max_length=1),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='item',
             name='slug',
-            field=models.SlugField(default=django.utils.timezone.now),
+            field=models.SlugField(null=True, blank=True),
             preserve_default=False,
         ),
         migrations.AddField(
@@ -56,7 +56,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='orderitem',
             name='user',
-            field=models.ForeignKey(default=django.utils.timezone.now, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(null=True, blank=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
             preserve_default=False,
         ),
     ]

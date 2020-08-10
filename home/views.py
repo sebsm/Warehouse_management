@@ -28,31 +28,31 @@ def home(request):
        }
    )
 
-def contact(request):
-    """Renders the contact page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'home/contact.html',
-        {
-            'title':'Contact',
-            'message':'Your contact page.',
-            'year':datetime.now().year,
-        }
-    )
+# def contact(request):
+#     """Renders the contact page."""
+#     assert isinstance(request, HttpRequest)
+#     return render(
+#         request,
+#         'home/contact.html',
+#         {
+#             'title':'Contact',
+#             'message':'Your contact page.',
+#             'year':datetime.now().year,
+#         }
+#     )
 
-def about(request):
-    """Renders the about page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'home/about.html',
-        {
-            'title':'About',
-            'message':'Your application description page.',
-            'year':datetime.now().year,
-        }
-    )
+# def about(request):
+#     """Renders the about page."""
+#     assert isinstance(request, HttpRequest)
+#     return render(
+#         request,
+#         'home/about.html',
+#         {
+#             'title':'About',
+#             'message':'Your application description page.',
+#             'year':datetime.now().year,
+#         }
+#     )
 
 def product(request):
     context = {
@@ -68,12 +68,12 @@ def checkout(request):
 class HomeView(ListView):
     model = Item
     paginate_by = 10
-    template_name = "home.html"
+    template_name = "home/home.html"
 
 
 class ItemDetailView(DetailView):
     model = Item
-    template_name = "product.html"
+    template_name = "home/product.html"
 
 def add_to_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
@@ -92,14 +92,14 @@ def add_to_cart(request, slug):
         else:
             order.items.add(order.item)
             messages.info(request, "This item was added to your cart")
-            return redirect("core:product", slug = slug)
+            return redirect("home:product", slug = slug)
     else:
         ordered_date = timezone.now() 
         order = Order.objects.create(
             user=request.user, ordered_date=ordered_date)
         order.items.add(order_item)
         messages.info(request, "This item quantity was updated")
-        return redirect("core:product", slug = slug)
+        return redirect("home:product", slug = slug)
 
 def remove_from_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
@@ -117,11 +117,11 @@ def remove_from_cart(request, slug):
             )[0]
             order.items.remove(order.item)
             messages.info(request, "This item was removed from your cart")
-            return redirect("core:product", slug=slug)
+            return redirect("home:product", slug=slug)
         else:
             messages.info(request, "This item was not in your cart")
-            return redirect("core:product", slug=slug)
+            return redirect("home:product", slug=slug)
     else:
         messages.info(request, "You do not have an active order")
-        return redirect("core:product", slug=slug)
-    return redirect("core:product", slug=slug)
+        return redirect("home:product", slug=slug)
+    return redirect("home:product", slug=slug)

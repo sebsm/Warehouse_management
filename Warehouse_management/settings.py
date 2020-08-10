@@ -32,8 +32,8 @@ ALLOWED_HOSTS = []
 # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-INSTALLED_APPS
 INSTALLED_APPS = [
     'home',
-    'login_logout',
-    'users',
+    #'login_logout',
+    #'users',
     # Add your apps here to enable them
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'django_countries',
 ]
 
 SITE_ID = 1
