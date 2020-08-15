@@ -1,7 +1,7 @@
 """
 Definition of models.
 """
-
+from django.core.files.storage import FileSystemStorage
 from django.db.models.signals import post_save
 from django.conf import settings
 from django.db import models
@@ -10,6 +10,7 @@ from django.shortcuts import reverse
 from django_countries.fields import CountryField
 # Create your models here.
 
+fs = FileSystemStorage(location='/media/photos')
 
 CATEGORY_CHOICES = (
     ('F', 'Fruits'),
@@ -24,58 +25,6 @@ LABEL_CHOICES = (
     ('S', 'Secondary'),
     ('D', 'Danger')
     )
-
-# class Item(models.Model):
-#     title = models.CharField(max_length = 100)
-#     price = models.FloatField()
-#     discount_price = models.FloatField(blank = True, null = True)
-#     category = models.CharField(choices = CATEGORY_CHOICES, max_length =2 )
-#     label = models.CharField(choices = LABEL_CHOICES, max_length =1 )
-#     slug = models.SlugField()
-#     description = models.TextField()
-    
-
-
-#     def __str__(self):
-#         return self.title
-
-#     def get_absolute_url(self):
-#         return reverse("home:product", kwargs = {
-#             'slug': self.slug
-#         })
-#     def get_add_to_cart_url(self):
-#         return reverse("home:add-to-cart", kwargs={
-#             'slug': self.slug
-#         })
-
-#     def get_remove_from_cart_url(self):
-#         return reverse("home:remove-from-cart", kwargs={
-#             'slug': self.slug
-#         })
-
-
-# class OrderItem(models.Model):
-#     user = models.ForeignKey(settings.AUTH_USER_MODEL,
-#                             on_delete = models.CASCADE)
-#     ordered = models.BooleanField(default = False)
-#     item = models.ForeignKey(Item, on_delete = models.CASCADE)
-#     quantity = models.IntegerField(default=1)
-
-
-#     def __str__(self):
-#         return f"{self.quantity} of {self.object.title}"
-
-# class Order(models.Model):
-#     user = models.ForeignKey(settings.AUTH_USER_MODEL,
-#                             on_delete = models.CASCADE)
-#     items = models.ManyToManyField(OrderItem)
-#     #start_date = models.DateTimeField(auto_now_add = True)
-#     #ordered_date = models.DateTimeField()
-#     ordered = models.BooleanField(default = False)
-
-#     def __str__(self):
-#         return self.user.username
-
 
 ADDRESS_CHOICES = (
     ('B', 'Billing'),
@@ -102,22 +51,22 @@ class Item(models.Model):
     slug = models.SlugField()
     description = models.TextField()
     image = models.ImageField()
-
+#storage=fs
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("core:product", kwargs={
+        return reverse("home:product", kwargs={
             'slug': self.slug
         })
 
     def get_add_to_cart_url(self):
-        return reverse("core:add-to-cart", kwargs={
+        return reverse("home:add-to-cart", kwargs={
             'slug': self.slug
         })
 
     def get_remove_from_cart_url(self):
-        return reverse("core:remove-from-cart", kwargs={
+        return reverse("home:remove-from-cart", kwargs={
             'slug': self.slug
         })
 
@@ -125,7 +74,7 @@ class Item(models.Model):
 class OrderItem(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
-    ordered = models.BooleanField(default=False)
+    ordered = models.BooleanField(default=False,blank=True, null=True)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
 
@@ -152,8 +101,8 @@ class Order(models.Model):
                              on_delete=models.CASCADE)
     ref_code = models.CharField(max_length=20, blank=True, null=True)
     items = models.ManyToManyField(OrderItem)
-    start_date = models.DateTimeField(auto_now_add=True)
-    ordered_date = models.DateTimeField()
+    start_date = models.DateTimeField(auto_now_add=True,blank=True, null=True)
+    ordered_date = models.DateTimeField(blank=True, null=True)
     ordered = models.BooleanField(default=False)
     shipping_address = models.ForeignKey(
         'Address', related_name='shipping_address', on_delete=models.SET_NULL, blank=True, null=True)
