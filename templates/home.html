@@ -85,7 +85,15 @@
                     </a>
                   </strong>
                 </h5>
-
+                <h3 class="font-weight-bold red-text">
+                  <strong> 
+                  {% if item.discount_price %}
+                  <s> $
+                  {{ item.price }} 
+                  {% endif %}
+                  </s>
+                  </strong>
+                </h3>
                 <h4 class="font-weight-bold blue-text">
                   <strong>$
                   {% if item.discount_price %}
